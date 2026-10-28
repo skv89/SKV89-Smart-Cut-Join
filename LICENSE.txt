@@ -1,0 +1,17 @@
+SKV89's Smart Cut & Join — application license
+Copyright (c) 2026 SKV89. All rights reserved.
+
+Permission is granted to use this application, without charge, for personal or
+commercial purposes, and to copy and redistribute the complete, unmodified
+portable application package with this notice and its third-party notices.
+No application source-code license is granted. No ownership or endorsement by
+third-party projects is implied.
+
+The application is provided "as is", without warranty of any kind, to the extent
+permitted by applicable law. You are responsible for keeping backups and
+checking that exported media meets your needs.
+
+Third-party components remain under their own licenses. This application license
+does not restrict rights those licenses grant, including modifying or replacing
+LGPL libraries and reverse engineering to debug those modifications. It does not
+restrict rights provided by applicable law.
