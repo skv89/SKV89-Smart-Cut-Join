@@ -1,27 +1,24 @@
-# SKV89's Smart Cut & Join v1.0.0
+# SKV89's Smart Cut & Join v1.0.1
 
-The first public release of a portable Windows video cutter, splitter and joiner.
+This update improves editing of files with irregular timestamps and makes the Export dialog clearer.
 
-## Highlights
+## Changes
 
-- **Smart cut:** copy video between safe keyframes and encode the boundaries that need it, with supported CPU and NVIDIA paths.
-- **Flexible editing:** keep clips or delete gaps; use automatic chronological order or explicitly allow custom order and overlaps. Export separate clips or merge them.
-- **Precise navigation:** drag the playhead to scan the preview, step by frame or keyframe, and use waveform and timeline zoom controls.
-- **Track control:** select and reorder audio and subtitles independently of preview choices. Supported subtitle paths include text, ASS/SSA, DVD/VobSub and PGS.
-- **Join:** stream-copy compatible files or explicitly choose supported software/NVIDIA encoding, with track mapping, aspect-ratio controls and Undo/Redo.
-- **Batch queue:** retain each job's cuts, tracks, output name and settings. Review elapsed time per job, retry unfinished work and clear completed entries. Saving the queue between sessions is optional and off initially.
-- **Clear output checks:** Light checks packets and timing; Intermediate also decodes boundary regions; Full decodes each final output and checks its audio. Qualified NVIDIA video verification is available with CPU fallback for unsupported configurations.
-- **Saved preferences:** General settings hold Cut defaults. Export-dialog overrides apply to that job. Software H.264/HEVC offer separate Balanced and Quality effort choices.
-- **Local Optimization:** finish scenarios individually, repeat competitive measurements as needed, and save qualified resource recommendations automatically. Quick, Extended and Performance search have ceilings of 10, 30 and 60 active minutes per scenario.
+- **Keep editing when frame indexing is unreliable.** The app switches to Time mode instead of leaving Set Start and Set End disabled. Opening a healthy file restores your preferred frame display.
+- **Handle repeated video timestamps more reliably.** Unaffected ranges can still use smart cut. When a selection includes distinct pictures sharing a timestamp, full-segment encoding can retain those pictures with repaired timing while keeping audio and subtitles aligned. Choose FFV1 when lossless full-segment encoding is needed.
+- **Prevent stray hover help at startup.** Restoring a saved dropdown selection no longer shows a tooltip before the main window is ready.
+- **Show useful export notes without interrupting work.** Amber notes are reserved for unresolved concerns. Successful automatic scan fallbacks and timestamp repairs remain in job details. No extra loading scans or queue confirmation prompts are added.
+- **Tidy the Export dialog.** Dropdowns share a common left edge, descriptions use natural paragraph spacing, and Export/Cancel remain accessible when the options need scrolling.
 
-## Download and run
+Fast source analysis and Light output checks remain the Cut defaults. Fast still falls back to a full source scan when needed. Full output decoding remains optional.
 
-Download **SKV89-Smart-Cut-Join-v1.0.0-Windows-x64.zip**, extract the entire archive, and run **SKV89's Smart Cut & Join.exe**. Keep the runtime and license folders beside it. Python is not required. On first use, choose **Settings > General > Install/update FFmpeg > Install FFmpeg** to obtain the latest stable Full build directly from Gyan.dev. This checksum-verified download requires internet access; subsequent editing and exports work offline. Existing compatible FFmpeg/FFprobe 9.0+ tools can also be used. **SHA256SUMS.txt** identifies the exact downloads.
+## Download and update
 
-The optional **SKV89-Smart-Cut-Join-v1.0.0-Library-Support.zip** contains instructions, a generic library-replacement utility and the PyAV loader patch. It is for exercising third-party library modification rights, and is not needed to run the app. It contains no Smart Cut & Join application source.
+- **First-time installation:** download `SKV89-Smart-Cut-Join-v1.0.1-Windows-x64.zip`, extract the **entire ZIP**, and keep its folders together.
+- **Updating an existing v1.0.0 installation:** close the app, extract the ZIP elsewhere, then copy **only `SKV89's Smart Cut & Join.exe`** into the existing app folder. Keep `runtime`, `licenses` and `data`. No FFmpeg reinstallation is required. Refreshed documentation is included but optional to copy.
+- **Library Support ZIP:** optional tools and instructions for replacing separately licensed libraries; not needed for normal use.
+- **SHA256SUMS.txt:** checksums for both ZIP files.
 
-## Before exporting
+Requires Windows x64. FFmpeg and FFprobe 9.0 or newer are separate tools. The app checks `runtime/ffmpeg`, its own folder and explicit absolute PATH locations. If needed, use **Settings > General > Install/update FFmpeg** to download the latest stable Full build directly from Gyan.dev.
 
-Copied video is unchanged; encoded edges are not lossless. Compatibility depends on the input codec, track format and output container. HDR/Dolby Vision, interlaced boundary encoding and certain subtitle/audio formats remain unsupported. NVIDIA verification is currently restricted to its qualified GPU/driver and format combinations; other configurations use CPU.
-
-The application source is private. Third-party components retain their own licenses. See **README.md**, the included **README.txt**, and **THIRD_PARTY.md** for requirements and limitations.
+HDR/Dolby Vision and interlaced re-encoding remain outside the supported encoding paths. Damaged files and unsupported codec/container combinations can still require conversion or repair.

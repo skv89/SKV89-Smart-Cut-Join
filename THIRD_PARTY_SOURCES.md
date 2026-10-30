@@ -1,4 +1,4 @@
-# Third-party sources and build information — v1.0.0
+# Third-party sources and build information — v1.0.1
 
 These materials cover the separately licensed libraries and tools distributed with SKV89's Smart Cut & Join. Their licenses and modification rights are independent of the application license. The application source is not included.
 

@@ -31,7 +31,7 @@ So I created SKV89’s Smart Cut & Join: my vision of the ideal video cutter and
 
 ## Get started
 
-1. Download `SKV89-Smart-Cut-Join-v1.0.0-Windows-x64.zip` from [Releases](https://github.com/skv89/SKV89-Smart-Cut-Join/releases).
+1. Download `SKV89-Smart-Cut-Join-v1.0.1-Windows-x64.zip` from [Releases](https://github.com/skv89/SKV89-Smart-Cut-Join/releases).
 2. Extract the entire ZIP into a writable folder.
 3. Run **SKV89's Smart Cut & Join.exe**. Keep its `runtime` and `licenses` folders beside it.
 4. On first use, open **Settings > General > Install/update FFmpeg**, then select **Install FFmpeg**. This downloads the latest stable Full build directly from Gyan.dev and verifies its checksum. An existing compatible FFmpeg/FFprobe 9.0+ installation can also be used.
@@ -40,6 +40,12 @@ So I created SKV89’s Smart Cut & Join: my vision of the ideal video cutter and
 Windows x64 is required. Python does not need to be installed. The package includes the preview player and app libraries. FFmpeg and FFprobe are downloaded separately from Gyan.dev using the built-in installer; internet access is needed for that initial download. Once installed, normal editing and exporting work offline. NVIDIA encoding requires a compatible GPU and driver; CPU paths remain available for supported formats.
 
 Settings, projects, history and caches live in the app's `data` folder. Move that folder with the app to retain your work. Automatic project saving is off initially; use **Save project** or enable it in Settings. Videos and optimization results stay local. Updating media tools is an explicit action.
+
+### Updating from v1.0.0
+
+Close the app, extract the new ZIP into a separate folder, and copy **only `SKV89's Smart Cut & Join.exe`** into your existing app folder, replacing the old EXE. Keep your existing `runtime`, `licenses` and `data` folders. No FFmpeg reinstallation is required for this update. The ZIP also includes refreshed documentation; copying it is optional.
+
+For a first-time installation, extract the **entire ZIP** and keep its folders together.
 
 ## Cut and smart rendering
 
@@ -50,6 +56,8 @@ Settings, projects, history and caches live in the app's `data` folder. Move tha
 | **Encode selected segments** | Encodes the complete selected video when smart rendering is unavailable for a supported source. |
 
 Copied video is unchanged. Encoded edges are not lossless. Very short selections or long gaps between safe keyframes can require encoding most or all of a selection.
+
+If irregular timestamps prevent reliable frame-number editing, the app switches to Time mode so you can still set Start and End. Unaffected ranges can still use smart cut. Selections containing repeated timestamps may require full-segment encoding to retain each distinct picture; supported repairs are recorded in the job details. A healthy next file restores your preferred frame display.
 
 The app starts in **Default: Chronologic order**. Segments stay in source order and cannot overlap. **Out-of-order & overlaps allowed** enables custom order, duplicates and repeated footage. **Delete segments** removes marked gaps and exports the remainder chronologically.
 
@@ -84,6 +92,8 @@ Software H.264/x264 and HEVC/x265 offer **Balanced** and **Quality** effort. Qua
 A merged export has one final output to check; separate files each receive their own checks. Full output checking does not decode the entire original movie.
 
 Cut initially uses Light output checks and Fast analysis. Save Cut defaults in **Settings > General**; changes made inside an Export dialog affect that job only. Join initially uses Intermediate checks.
+
+When existing analysis reveals a concern that still needs your attention, the Export dialog can show a concise amber note. Successful automatic scan fallbacks and timestamp repairs remain ordinary job details. These notes add no file-loading scans or confirmation prompts and do not pause an unattended queue.
 
 Video checking can use CPU or qualified NVIDIA decoding. NVIDIA verification is currently qualified for progressive SDR H.264 8-bit and HEVC 10-bit 4:2:0, up to 4K, on the RTX PRO 6000 Blackwell Workstation Edition with driver 616.92. Other configurations use CPU with an explanation. Reported corruption or count/timing failure is not cleared by a fallback. No check guarantees detection of every possible picture error.
 

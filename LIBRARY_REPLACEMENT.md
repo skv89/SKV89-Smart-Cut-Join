@@ -2,7 +2,7 @@
 
 Third-party library licenses remain in force. The application license permits modifying or replacing LGPL libraries and reverse engineering to debug those modifications. The distributed application object code is retained when recombining a new executable; private application source is not needed for this procedure.
 
-The optional **SKV89-Smart-Cut-Join-v1.0.0-Library-Support.zip** release asset contains a small, MIT-licensed replacement utility and the PyAV loader patch. It is not needed for ordinary app use.
+The optional **SKV89-Smart-Cut-Join-v1.0.1-Library-Support.zip** release asset contains a small, MIT-licensed replacement utility and the PyAV loader patch. It is not needed for ordinary app use.
 
 ## External tools
 
@@ -47,7 +47,7 @@ Either or both kinds of replacement can be supplied. A `PYZ/` replacement must b
 .\library-env\Scripts\python.exe replace_libraries.py "C:\MyApp\SKV89's Smart Cut & Join.exe" --replace replacements.json --output "C:\MyApp\SmartCut-modified.exe"
 ```
 
-The utility verifies each rebuilt archive entry and checks that all other entries and the original executable remain unchanged. It supports this unsigned v1.0.0 executable; it refuses signed executables rather than silently removing a signature. Start the new executable from the copied folder and test the behavior affected by your library change. Modified libraries must retain compatible APIs/ABIs to work with existing application object code.
+The utility verifies each rebuilt archive entry and checks that all other entries and the original executable remain unchanged. It supports this unsigned v1.0.1 executable; it refuses signed executables rather than silently removing a signature. Start the new executable from the copied folder and test the behavior affected by your library change. Modified libraries must retain compatible APIs/ABIs to work with existing application object code.
 
 ## PyAV loader change
 
