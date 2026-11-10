@@ -1,4 +1,4 @@
-# Third-party sources and build information — v1.0.1
+# Third-party sources and build information — v1.0.2
 
 These materials cover the separately licensed libraries and tools distributed with SKV89's Smart Cut & Join. Their licenses and modification rights are independent of the application license. The application source is not included.
 
@@ -10,7 +10,7 @@ This ZIP does not distribute ffmpeg.exe or ffprobe.exe. The built-in installer o
 
 ## In-process FFmpeg libraries
 
-The libraries loaded by PyAV are the separate LGPL shared build **n8.1.3-18-g46d899d7a0-20261014**, source [46d899d7a0](https://github.com/FFmpeg/FFmpeg/tree/46d899d7a0). They are packed under `av/_dlls` in the application EXE. They are not the Gyan command-line tools. Do not mix the two library sets.
+The libraries loaded by PyAV are the separate LGPL shared build **n8.1.3-18-g46d899d7a0-20261014**, source [46d899d7a0](https://github.com/FFmpeg/FFmpeg/tree/46d899d7a0). They are supplied under `av/_dlls/` in the portable package’s `support-*` folder. They are not the Gyan command-line tools. Do not mix the two library sets.
 
 Use [BtbN's source/build recipes at 63ac3265b0789ea16c7b1f8351cd2ad195a28722](https://github.com/BtbN/FFmpeg-Builds/tree/63ac3265b0789ea16c7b1f8351cd2ad195a28722). [Download the recipes](https://github.com/BtbN/FFmpeg-Builds/archive/63ac3265b0789ea16c7b1f8351cd2ad195a28722.tar.gz), preserving the complete build tree, dependency recipes, patches and license-variant configuration.
 
@@ -188,7 +188,7 @@ The remaining Meson source archives and overlays used by the Windows build are l
 | freetype2 | [Source](https://download.savannah.gnu.org/releases/freetype/freetype-2.14.3.tar.xz) | Included in source |
 | libpng | [Source](https://github.com/pnggroup/libpng/archive/v1.6.58.tar.gz) | [Build overlay](https://wrapdb.mesonbuild.com/v2/libpng_1.6.58-1/get_patch) |
 | google-brotli | [Source](https://github.com/google/brotli/archive/v1.1.0.tar.gz) | [Build overlay](https://wrapdb.mesonbuild.com/v2/google-brotli_1.1.0-3/get_patch) |
-| fribidi | [Source](https://github.com/fribidi/fribidi/releases/download/v1.0.16/fribidi-1.0.16.tar.xz) | Included in source |
+| fribidi | [Source](https://github.com/fribidi/fribidi/releases/download/v1.0.26/fribidi-1.0.16.tar.xz) | Included in source |
 | harfbuzz | [Source](https://github.com/harfbuzz/harfbuzz/releases/download/13.0.1/harfbuzz-13.0.1.tar.xz) | Included in source |
 | icu | [Source](https://github.com/unicode-org/icu/releases/download/release-77-1/icu4c-77_1-src.tgz) | [Build overlay](https://wrapdb.mesonbuild.com/v2/icu_77.1-3/get_patch) |
 | dlfcn-win32 | [Source](https://github.com/dlfcn-win32/dlfcn-win32/archive/refs/tags/v1.4.2.tar.gz) | [Build overlay](https://wrapdb.mesonbuild.com/v2/dlfcn-win32_1.4.2-1/get_patch) |
@@ -240,4 +240,4 @@ The Python HTTPS runtime uses OpenSSL 3.5.8, with its Apache-2.0 license and aut
 
 PyAV is based on [16.0.1 source](https://github.com/PyAV-Org/PyAV/tree/v16.0.1). It is built against the LGPL FFmpeg 8.1 library set above. The only local Python loader change adds the `av/_dlls` directory with `os.add_dll_directory` before importing the bindings; that patch is supplied with the library-support download. Build against the same libav ABI and retain PyAV's license/author notices.
 
-Python, NumPy, Pillow, smartcut, PyInstaller and icons retain the notices listed in [THIRD_PARTY.md](THIRD_PARTY.md). Library-replacement instructions are in [LIBRARY_REPLACEMENT.md](LIBRARY_REPLACEMENT.md). Source availability and licensing for those components do not grant rights to the private application source.
+Python, NumPy, smartcut, PyInstaller and icons retain the notices listed in [THIRD_PARTY.md](THIRD_PARTY.md). Library-replacement instructions are in [LIBRARY_REPLACEMENT.md](LIBRARY_REPLACEMENT.md). Source availability and licensing for those components do not grant rights to the private application source.

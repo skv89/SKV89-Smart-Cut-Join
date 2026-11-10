@@ -11,7 +11,6 @@ SKV89's Smart Cut & Join is an independent application. Third-party components r
 | [PyAV](https://github.com/PyAV-Org/PyAV) | Media bindings | BSD-3-Clause; adapted to load the bundled LGPL FFmpeg libraries. |
 | [smartcut](https://github.com/skeskinen/smartcut) | Smart rendering foundation | MIT, with local adaptations. |
 | [NumPy](https://numpy.org/) | Numeric processing | BSD and included component licenses. |
-| [Pillow](https://python-pillow.org/) | Image support | MIT-CMU and included component licenses. |
 | [OpenSSL 3.5.8](https://github.com/openssl/openssl/tree/openssl-3.5.8) | Python HTTPS downloads | Apache-2.0; license and author notices in the licenses folder. |
 | [Python](https://www.python.org/) | Embedded language runtime | PSF and included component terms. |
 | [PyInstaller](https://pyinstaller.org/) | Application packaging | GPL with bootloader exception. |

@@ -31,9 +31,9 @@ So I created SKV89’s Smart Cut & Join: my vision of the ideal video cutter and
 
 ## Get started
 
-1. Download `SKV89-Smart-Cut-Join-v1.0.1-Windows-x64.zip` from [Releases](https://github.com/skv89/SKV89-Smart-Cut-Join/releases).
+1. Download `SKV89-Smart-Cut-Join-v1.0.2-Windows-x64.zip` from [Releases](https://github.com/skv89/SKV89-Smart-Cut-Join/releases).
 2. Extract the entire ZIP into a writable folder.
-3. Run **SKV89's Smart Cut & Join.exe**. Keep its `runtime` and `licenses` folders beside it.
+3. Run **SKV89's Smart Cut & Join.exe**. Keep the `support-*`, `runtime`, `tools`, `docs` and `licenses` folders beside it.
 4. On first use, open **Settings > General > Install/update FFmpeg**, then select **Install FFmpeg**. This downloads the latest stable Full build directly from Gyan.dev and verifies its checksum. An existing compatible FFmpeg/FFprobe 9.0+ installation can also be used.
 5. Open a video, set Start and End, review tracks and output settings, then select **Export**.
 
@@ -41,23 +41,29 @@ Windows x64 is required. Python does not need to be installed. The package inclu
 
 Settings, projects, history and caches live in the app's `data` folder. Move that folder with the app to retain your work. Automatic project saving is off initially; use **Save project** or enable it in Settings. Videos and optimization results stay local. Updating media tools is an explicit action.
 
-### Updating from v1.0.0
+### Check for updates
 
-Close the app, extract the new ZIP into a separate folder, and copy **only `SKV89's Smart Cut & Join.exe`** into your existing app folder, replacing the old EXE. Keep your existing `runtime`, `licenses` and `data` folders. No FFmpeg reinstallation is required for this update. The ZIP also includes refreshed documentation; copying it is optional.
+Click **Check for updates** in the title bar to see the installed version and the latest stable GitHub release. When a newer version is available, **View release** opens its download page. The app checks when you click the button and leaves installation to you.
 
-For a first-time installation, extract the **entire ZIP** and keep its folders together.
+### Upgrading from public v1.0.0 or v1.0.1
+
+This upgrade requires the **entire v1.0.2 Windows x64 ZIP**. Close the old app and extract the new ZIP into a separate writable folder. Copy your existing `data` folder into the new app folder to keep settings, projects, history and Optimization results. If you installed FFmpeg in the old app’s `runtime/ffmpeg` folder, copy that folder to the same location. If `ffmpeg.exe` and `ffprobe.exe` were beside the old app EXE, put the pair and any DLLs supplied with that FFmpeg build into the new `runtime/ffmpeg` folder. An existing compatible pair on your system PATH is ready to use.
+
+The EXE loads its libraries from the persistent `support-*` folder. Ordinary launches use the files in place. Keep the ZIP if you want to restore missing or damaged runtime files later with `tools/Repair.exe`.
 
 ## Cut and smart rendering
 
 | Mode | What happens |
 | --- | --- |
 | **Smart cut** | Keeps the selected video-frame boundaries and source codec, copying the middle and encoding required edges. |
-| **Keyframe copy** | Copies without encoding. Cuts may expand to safe keyframes; review the actual boundaries. |
+| **Keyframe copy** | Copies without encoding. In Keep mode, review any expansion to safe boundaries. In Delete mode, the option is available when all remaining footage can be copied at the exact marks. |
 | **Encode selected segments** | Encodes the complete selected video when smart rendering is unavailable for a supported source. |
+
+When all retained pictures can be copied exactly, Smart cut skips the edge encoder. A keyframe can have nearby pictures that still depend on earlier footage. The review identifies a boundary that needs encoding, and the completion window reports the actual copied and encoded frame counts.
 
 Copied video is unchanged. Encoded edges are not lossless. Very short selections or long gaps between safe keyframes can require encoding most or all of a selection.
 
-If irregular timestamps prevent reliable frame-number editing, the app switches to Time mode so you can still set Start and End. Unaffected ranges can still use smart cut. Selections containing repeated timestamps may require full-segment encoding to retain each distinct picture; supported repairs are recorded in the job details. A healthy next file restores your preferred frame display.
+Time and Frames are both available when the frame index is ordered, including when several pictures share a timestamp. The frame display identifies the group. If the index cannot support reliable frame-number editing, the app uses Time mode so you can still set Start and End. Unaffected ranges can still use smart cut. Selections containing repeated timestamps may require full-segment encoding to retain each distinct picture; supported repairs are recorded in the job details. A healthy next file restores your preferred frame display.
 
 The app starts in **Default: Chronologic order**. Segments stay in source order and cannot overlap. **Out-of-order & overlaps allowed** enables custom order, duplicates and repeated footage. **Delete segments** removes marked gaps and exports the remainder chronologically.
 
@@ -109,6 +115,10 @@ Cancellation retains completed outputs. Retry only the unfinished files of a fai
 
 Optimization finishes one selected scenario before moving to the next. Quick, Extended and Performance search allow **up to 10, 30 and 60 active minutes per scenario**. They can finish sooner when further measurements are unlikely to change the recommendation.
 
+The **Create output** columns control encoding and parallel production jobs. The **Check output** columns control the decoder, CPU thread budget and decode jobs for checking exported video. In Results, **Export speed** measures the complete export with the selected checks. **Video check speed** measures checking an existing output with different decoder settings. The dialog identifies the settings recommended by that run and the settings currently in use.
+
+A recoverable failed row can save its reason and advance. GPU work retries a missing temperature reading and can be deferred while eligible CPU work continues. A measured GPU temperature of 91 °C stops the batch. Lossless FFV1 tests use measured temporary space to size their clips. Resume retains completed work.
+
 Competitive settings receive repeated measurements. Results show mean and median time, variation, measured coverage and failures. A modest timing spread does not discard correctly verified results. Encoder effort and output-check policies are recorded so comparisons remain meaningful.
 
 Qualified recommendations are saved and used automatically. Stop and Resume retain completed work. A failed or inconclusive rerun does not erase an earlier valid recommendation, and a newer manual edit is preserved. Balanced and Quality software encoding have separate resource recommendations. Results reflect the measured workloads, not a universal optimum for all videos.
@@ -121,7 +131,7 @@ Qualified recommendations are saved and used automatically. Stop and Resume reta
 - DVB/teletext subtitles, unsupported bitmap control programs and some legacy audio/container combinations require explicit conversion or exclusion.
 - CPU and NVIDIA support depends on the source format and available runtime. The app explains unsupported combinations before proceeding where possible.
 
-See the package's **README.txt** for detailed controls, supported paths and limitations.
+See the package's **docs/README.txt** for detailed controls, supported paths and limitations.
 
 ## License and acknowledgments
 
