@@ -1,4 +1,4 @@
-# Third-party sources and build information — v1.0.2
+# Third-party sources and build information — v1.0.3
 
 These materials cover the separately licensed libraries and tools distributed with SKV89's Smart Cut & Join. Their licenses and modification rights are independent of the application license. The application source is not included.
 
@@ -188,7 +188,7 @@ The remaining Meson source archives and overlays used by the Windows build are l
 | freetype2 | [Source](https://download.savannah.gnu.org/releases/freetype/freetype-2.14.3.tar.xz) | Included in source |
 | libpng | [Source](https://github.com/pnggroup/libpng/archive/v1.6.58.tar.gz) | [Build overlay](https://wrapdb.mesonbuild.com/v2/libpng_1.6.58-1/get_patch) |
 | google-brotli | [Source](https://github.com/google/brotli/archive/v1.1.0.tar.gz) | [Build overlay](https://wrapdb.mesonbuild.com/v2/google-brotli_1.1.0-3/get_patch) |
-| fribidi | [Source](https://github.com/fribidi/fribidi/releases/download/v1.0.26/fribidi-1.0.16.tar.xz) | Included in source |
+| fribidi | [Source](https://github.com/fribidi/fribidi/releases/download/v1.0.36/fribidi-1.0.16.tar.xz) | Included in source |
 | harfbuzz | [Source](https://github.com/harfbuzz/harfbuzz/releases/download/13.0.1/harfbuzz-13.0.1.tar.xz) | Included in source |
 | icu | [Source](https://github.com/unicode-org/icu/releases/download/release-77-1/icu4c-77_1-src.tgz) | [Build overlay](https://wrapdb.mesonbuild.com/v2/icu_77.1-3/get_patch) |
 | dlfcn-win32 | [Source](https://github.com/dlfcn-win32/dlfcn-win32/archive/refs/tags/v1.4.2.tar.gz) | [Build overlay](https://wrapdb.mesonbuild.com/v2/dlfcn-win32_1.4.2-1/get_patch) |

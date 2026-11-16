@@ -31,7 +31,7 @@ So I created SKV89’s Smart Cut & Join: my vision of the ideal video cutter and
 
 ## Get started
 
-1. Download `SKV89-Smart-Cut-Join-v1.0.2-Windows-x64.zip` from [Releases](https://github.com/skv89/SKV89-Smart-Cut-Join/releases).
+1. Download `SKV89-Smart-Cut-Join-v1.0.3-Windows-x64.zip` from [Releases](https://github.com/skv89/SKV89-Smart-Cut-Join/releases).
 2. Extract the entire ZIP into a writable folder.
 3. Run **SKV89's Smart Cut & Join.exe**. Keep the `support-*`, `runtime`, `tools`, `docs` and `licenses` folders beside it.
 4. On first use, open **Settings > General > Install/update FFmpeg**, then select **Install FFmpeg**. This downloads the latest stable Full build directly from Gyan.dev and verifies its checksum. An existing compatible FFmpeg/FFprobe 9.0+ installation can also be used.
@@ -45,9 +45,9 @@ Settings, projects, history and caches live in the app's `data` folder. Move tha
 
 Click **Check for updates** in the title bar to see the installed version and the latest stable GitHub release. When a newer version is available, **View release** opens its download page. The app checks when you click the button and leaves installation to you.
 
-### Upgrading from public v1.0.0 or v1.0.1
+### Upgrading from v1.0.2 or earlier
 
-This upgrade requires the **entire v1.0.2 Windows x64 ZIP**. Close the old app and extract the new ZIP into a separate writable folder. Copy your existing `data` folder into the new app folder to keep settings, projects, history and Optimization results. If you installed FFmpeg in the old app’s `runtime/ffmpeg` folder, copy that folder to the same location. If `ffmpeg.exe` and `ffprobe.exe` were beside the old app EXE, put the pair and any DLLs supplied with that FFmpeg build into the new `runtime/ffmpeg` folder. An existing compatible pair on your system PATH is ready to use.
+This upgrade requires the **entire v1.0.3 Windows x64 ZIP**, including its updated support files and video-checking helper. Close the old app and extract the new ZIP into a separate writable folder. Copy your existing `data` folder into the new app folder to keep settings, projects, history and Optimization results. If you installed FFmpeg in the old app’s `runtime/ffmpeg` folder, copy that folder to the same location. If `ffmpeg.exe` and `ffprobe.exe` were beside the old app EXE, put the pair and any DLLs supplied with that FFmpeg build into the new `runtime/ffmpeg` folder. An existing compatible pair on your system PATH is ready to use.
 
 The EXE loads its libraries from the persistent `support-*` folder. Ordinary launches use the files in place. Keep the ZIP if you want to restore missing or damaged runtime files later with `tools/Repair.exe`.
 
@@ -64,6 +64,8 @@ When all retained pictures can be copied exactly, Smart cut skips the edge encod
 Copied video is unchanged. Encoded edges are not lossless. Very short selections or long gaps between safe keyframes can require encoding most or all of a selection.
 
 Time and Frames are both available when the frame index is ordered, including when several pictures share a timestamp. The frame display identifies the group. If the index cannot support reliable frame-number editing, the app uses Time mode so you can still set Start and End. Unaffected ranges can still use smart cut. Selections containing repeated timestamps may require full-segment encoding to retain each distinct picture; supported repairs are recorded in the job details. A healthy next file restores your preferred frame display.
+
+Click the video preview to pause or resume playback. The Play button also toggles playback; Space pauses it.
 
 The app starts in **Default: Chronologic order**. Segments stay in source order and cannot overlap. **Out-of-order & overlaps allowed** enables custom order, duplicates and repeated footage. **Delete segments** removes marked gaps and exports the remainder chronologically.
 
@@ -101,7 +103,7 @@ Cut initially uses Light output checks and Fast analysis. Save Cut defaults in *
 
 When existing analysis reveals a concern that still needs your attention, the Export dialog can show a concise amber note. Successful automatic scan fallbacks and timestamp repairs remain ordinary job details. These notes add no file-loading scans or confirmation prompts and do not pause an unattended queue.
 
-Video checking can use CPU or qualified NVIDIA decoding. NVIDIA verification is currently qualified for progressive SDR H.264 8-bit and HEVC 10-bit 4:2:0, up to 4K, on the RTX PRO 6000 Blackwell Workstation Edition with driver 616.92. Other configurations use CPU with an explanation. Reported corruption or count/timing failure is not cleared by a fallback. No check guarantees detection of every possible picture error.
+Video checking can use CPU or qualified NVIDIA decoding. NVIDIA verification is currently qualified for progressive SDR H.264 8-bit and HEVC 10-bit 4:2:0, up to 4K, on the RTX PRO 6000 Blackwell Workstation Edition. Updating the driver alone does not invalidate saved recommendations or require reoptimization. Other configurations use CPU with an explanation. Reported corruption or count/timing failure is not cleared by a fallback. No check guarantees detection of every possible picture error.
 
 ## Batch queue
 
@@ -113,15 +115,19 @@ Cancellation retains completed outputs. Retry only the unfinished files of a fai
 
 ## Optimization
 
-Optimization finishes one selected scenario before moving to the next. Quick, Extended and Performance search allow **up to 10, 30 and 60 active minutes per scenario**. They can finish sooner when further measurements are unlikely to change the recommendation.
+**Select all**, **Clear selection** and **Optimize selected** are together above the scenario checkboxes at the left. Optimization finishes one selected scenario before moving to the next. Quick, Extended and Performance search allow **up to 10, 30 and 60 active minutes per scenario**. They can finish sooner when further measurements are unlikely to change the recommendation.
 
 The **Create output** columns control encoding and parallel production jobs. The **Check output** columns control the decoder, CPU thread budget and decode jobs for checking exported video. In Results, **Export speed** measures the complete export with the selected checks. **Video check speed** measures checking an existing output with different decoder settings. The dialog identifies the settings recommended by that run and the settings currently in use.
 
-A recoverable failed row can save its reason and advance. GPU work retries a missing temperature reading and can be deferred while eligible CPU work continues. A measured GPU temperature of 91 °C stops the batch. Lossless FFV1 tests use measured temporary space to size their clips. Resume retains completed work.
+Untuned encoding settings start at **16 CPU threads**, capped by the logical CPUs available to the app. Manual values and measured recommendations take priority. The output-checking thread budget is separate.
+
+The mouse wheel over a closed dropdown or numeric field scrolls the page without changing its value. Open a dropdown to browse its choices. **Ctrl+Z** and **Ctrl+Y** undo and redo your manual Optimization edits during the current session; automatic Optimization recommendations and saved benchmark results are protected.
+
+A recoverable failed row saves a concise reason and advances. GPU work retries a missing temperature reading and can be deferred while eligible CPU work continues. A measured GPU temperature of 91 °C stops the batch. Lossless FFV1 tests account for temporary space across preparation, export and final checks, and can retry with shorter clips when needed. Resume retains completed work.
 
 Competitive settings receive repeated measurements. Results show mean and median time, variation, measured coverage and failures. A modest timing spread does not discard correctly verified results. Encoder effort and output-check policies are recorded so comparisons remain meaningful.
 
-Qualified recommendations are saved and used automatically. Stop and Resume retain completed work. A failed or inconclusive rerun does not erase an earlier valid recommendation, and a newer manual edit is preserved. Balanced and Quality software encoding have separate resource recommendations. Results reflect the measured workloads, not a universal optimum for all videos.
+Qualified recommendations are saved and used automatically. A driver update alone does not trigger a retest. Changes to the actual hardware, processing libraries or test workload can affect whether an older result applies; the app keeps its history and explains the relevant change. Stop and Resume retain completed work. A failed or inconclusive rerun does not erase an earlier valid recommendation, and a newer manual edit is preserved. Balanced and Quality software encoding have separate resource recommendations. Results reflect the measured workloads, not a universal optimum for all videos.
 
 ## Compatibility limits
 

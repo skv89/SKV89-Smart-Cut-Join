@@ -1,6 +1,6 @@
 # Replacing separately licensed libraries
 
-The portable v1.0.2 package loads its native libraries from the `support-*` folder beside the main EXE. The application license permits modifying or replacing LGPL libraries and reverse engineering to debug those modifications. Consult [third-party sources and build instructions](THIRD_PARTY_SOURCES.md) for the versions, patches and licenses.
+The portable v1.0.3 package loads its native libraries from the `support-*` folder beside the main EXE. The application license permits modifying or replacing LGPL libraries and reverse engineering to debug those modifications. Consult [third-party sources and build instructions](THIRD_PARTY_SOURCES.md) for the versions, patches and licenses.
 
 ## External libraries and tools
 
@@ -12,7 +12,7 @@ The mpv player can be replaced in `runtime/mpv/`. FFmpeg and FFprobe can be inst
 
 ## Python library modules embedded in the EXE
 
-The optional **SKV89-Smart-Cut-Join-v1.0.2-Library-Support.zip** includes a generic replacement utility and the PyAV loader patch. You can use it to replace embedded PySide6 or Shiboken Python modules while retaining the application object code.
+The optional **SKV89-Smart-Cut-Join-v1.0.3-Library-Support.zip** includes a generic replacement utility and the PyAV loader patch. You can use it to replace embedded PySide6 or Shiboken Python modules while retaining the application object code.
 
 1. Extract the Library Support ZIP. In that folder, use Windows x64 Python 3.12 to prepare the utility:
 
